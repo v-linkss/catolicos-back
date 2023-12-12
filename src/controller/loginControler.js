@@ -9,11 +9,14 @@ class LoginController {
         try {
           const jsonData = req.body;
           const resultado = await loginService.authUser(jsonData);
-          if(resultado.status != "ok"){
-            console.log("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ\n",resultado.status_mensagem)
-            res.status(500).json({ error: resultado });
-          }
-          res.status(200).json(resultado);
+          // if(resultado.status != "OK"){
+          //   console.log("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ\nhhhh",resultado)
+          //   res.status(500).json({ error: resultado });
+          // }else{
+          //   console.log("33333333333333333333333333\nhhhh",resultado)
+
+           res.status(200).json(resultado);
+          // }
         } catch (error) {
           res.status(500).json({ error: 'Erro ao autenticar usuário' });
         }
