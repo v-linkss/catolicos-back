@@ -20,6 +20,11 @@ routes.post("/recuperarSenha", async (req, res) => {
   await recuperarSenhaController.recuperarSenha(req, res);
 });
 
+routes.post("/alterarSenha", async (req, res) => {
+
+  await recuperarSenhaController.alterarSenha(req, res);
+});
+
 routes.use(authMiddleware); // TODAS AS ROTAS A BAIXO DESTA LINHA ESTARAM PROTEGIDAS PELA VALIDAÇÃO DE TOKEN
 
 
