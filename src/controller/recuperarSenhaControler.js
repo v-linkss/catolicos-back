@@ -15,7 +15,6 @@ class RecuperarSenhaController {
 
       }
       const resultado = await recuperarSenhaService.recuperarSenha(jsonData.email);
-      resultado = JSON.parse(resultado)
       res.status(200).json(resultado);
     } catch (error) {
       res.status(500).json({ error: 'Erro ao recuperar senha' });

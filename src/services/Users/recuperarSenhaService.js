@@ -9,6 +9,7 @@ class RecuperarSenhaService {
       replacements: { parametros: email },
       type: QueryTypes.SELECT,
     });
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n",resultados)
     return resultados; // Corrigido para retornar "resultados" em vez de "resultado"
   }
 
