@@ -19,8 +19,12 @@ class LoginService {
       replacements: {  parametros: JSON.stringify(data) }, // Substitua pelos parâmetros necessários
       type: QueryTypes.SELECT,
     });
-    console.log(resultado)
-    return resultado;
+        const parsedResultado = resultado.map(item=> {
+            return{
+              func_autentica_acesso_v1: JSON.parse(item.func_autentica_acesso_v1),
+            }
+          })
+        return parsedResultado  
     // Faça o processamento necessário com os resultados aqui
      
     
