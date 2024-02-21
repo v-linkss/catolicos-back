@@ -1,35 +1,32 @@
 const express = require("express");
-const { LoginController, RecuperarSenhaController} = require("../controller/index");
-const { ProxyApi } = require("../middleware/MSGerenciaProxy")
+const { ApiController } = require("../controller/apiControler");
 
-const { authMiddleware } = require('../middleware/Auth'); 
 
 const routes = express.Router();
-const loginController = new LoginController(); // Criando uma instância do LoginController
-const recuperarSenhaController = new RecuperarSenhaController(); // Criando uma instância do LoginController
+const apiController = new ApiController(); // Criando uma instância do LoginController
 
 
+routes.post("/cidades", async (req, res) => {
+  await apiController.func_cidades(req, res);
+});
 
-routes.post("/login", async (req, res) => {
-  await loginController.auth(req, res);
+routes.post("/eventos", async (req, res) => {
+  await apiController.func_eventos(req, res);
+});
+
+routes.post("/missas", async (req, res) => {
+  await apiController.func_dados_missas(req, res);
+});
+
+routes.post("/paroquia", async (req, res) => {
+  await apiController.func_dados_paroquia(req, res);
+});
+
+routes.post("/confissoes", async (req, res) => {
+  await apiController.func_confissoes(req, res);
 });
 
 
-routes.post("/recuperarSenha", async (req, res) => {
-
-  await recuperarSenhaController.recuperarSenha(req, res);
-});
-
-routes.post("/alterarSenha", async (req, res) => {
-
-  await recuperarSenhaController.alterarSenha(req, res);
-});
-
-routes.use(authMiddleware); // TODAS AS ROTAS A BAIXO DESTA LINHA ESTARAM PROTEGIDAS PELA VALIDAÇÃO DE TOKEN
-
-
-
-routes.use("/service/gerencia/*", ProxyApi);
 
 module.exports = {
   routes,
